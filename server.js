@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3000
 
 const path = require('path') //Dùng để nối các đường dẫn lại với nhau 
 app.use("/public", express.static(path.join(__dirname , '/public'))) //Dòng này nghĩa là khi truy cập đển địa chỉ:
@@ -11,5 +10,5 @@ app.get('/',(req,res)=>{
     res.sendFile(duongDanFile)
 })
 
-app.listen(port , ()=>{console.log(`Listen server PORT = ${port}`)})
-// Hi   kjasfsf
+app.listen(process.env.PORT , ()=>{})
+
