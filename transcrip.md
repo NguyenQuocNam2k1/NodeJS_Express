@@ -67,3 +67,92 @@ app.listen(port , ()=>{console.log(`Listen server PORT = ${port}`)})
 h1{
     color: red;
 }
+
+
+<!-- Những câu lệnh trong mongoose -->
++ find() là câu lệnh tìm db theo điều kiện
+  AccountModel.find({})
+   .then((data) => {
+     console.log("data", data);
+   })
+   .catch((err) => {
+     console.log("ERR:", err);
+   });
+
+
++ create() them dữ liệu vào DB
+  AccountModel.create({
+    username:"Nguyen",
+    password:270720012
+  }).then(data => {
+    console.log(data)
+  }).catch(err => {
+    console.log(err)
+  })
+
+
++ update() sửa dữ liệu trong DB
+   + updateMany() là method update nhiều document cùng 1 lúc
+   <!--  -->
+   AccountModel.updateMany(
+    {
+        username:'Nguyen Nam',
+        password:270720012
+    },
+    {
+        username:"Nguyen Nam 1"
+    }
+).then(data =>{
+    console.log('data',data)
+}).catch(err =>{
+    console.log('err' , err);
+  })
+  <!--  -->
+   + updateOne() là method update chỉ một document đầu tiên tìm thấy
+   <!--  -->
+   AccountModel.updateOne(
+    {
+        username:'Nguyen Nam',
+        password:270720012
+    },
+    {
+        username:"Nguyen Nam 1"
+    }
+).then(data =>{
+    console.log('data',data)
+}).catch(err =>{
+    console.log('err' , err);
+})
+<!--  -->
+
++ delete() xóa dữ liệu trong DB
+  + deleteMany() là xóa cùng 1 lúc nhiều documen
+  <!--  -->
+  AccountModel.deleteMany(
+    {
+        username:'Nguyen Nam'
+    },
+).then(data =>{
+    console.log('data',data)
+}).catch(err =>{
+    console.log('err' , err);
+})
+<!--  -->
+
+  + deleteOne() là xóa 1 document đầu tiên nhìn thấy
+  <!--  -->
+  AccountModel.deleteOne(
+    {
+        username:'Nguyen Nam'
+    },
+).then(data =>{
+    console.log('data',data)
+}).catch(err =>{
+    console.log('err' , err);
+})
+<!-- Biểu thức trong mongoose -->
+ + skip() là method bỏ qua bao nhiêu kết quả tìm thấy
+ + limit() là method giới hạn số DB lấy ra từ trong DB
+ + sort() sắp xếp kết quả trả về theo điều kiện
+<!-- OPARETOR in mongoose -->
+Có thể xem ở nguồn này: bmc.com/blogs/mongodb-operators/
