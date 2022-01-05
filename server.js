@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
 const app = express();
-app.use('/', (req , res) =>{
+app.get('/', (req , res) =>{
     res.json("SUCCESS")
 })
 
@@ -62,4 +62,5 @@ app.use('/', (req , res) =>{
 // });
 
 app.listen(process.env.PORT, () => {
+    console.log(process.env.PORT);
 });
