@@ -51,7 +51,7 @@ app.get('/', (req , res) =>{
 
 // const myBlog = mongoose.model("post", blogSchema);
 
-// app.get("/", async (req, res) => {
+// app.get("/posts", async (req, res) => {
 //   try {
 //     const posts = await myBlog.find({});
 //     console.log("Post", posts);
