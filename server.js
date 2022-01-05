@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 
 const app = express();
-const port = process.env.PORT;
 
 const URI =
   "mongodb+srv://admin:admin123@cluster0.xvdds.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -18,8 +17,8 @@ mongoose
   })
   .then(() => {
     console.log("Connected to DB");
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running on port ${process.env.PORT}`);
     });
   })
   .catch((err) => {
