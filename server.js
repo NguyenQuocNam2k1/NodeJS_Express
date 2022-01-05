@@ -17,9 +17,6 @@ mongoose
   })
   .then(() => {
     console.log("Connected to DB");
-    app.listen(process.env.PORT, () => {
-      console.log(`Server is running on port ${process.env.PORT}`);
-    });
   })
   .catch((err) => {
     console.log("err", err);
@@ -49,16 +46,18 @@ const blogSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const myBlog = mongoose.model("post", blogSchema);
 
-const myBlog = mongoose.model('post', blogSchema);
+app.get("/", async (req, res) => {
+  try {
+    const posts = await myBlog.find({});
+    console.log("Post", posts);
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
 
-
-app.get("/" , async (req , res) => {
-    try {
-        const posts = await myBlog.find({});
-        console.log("Post" , posts);
-        res.status(200).json(posts)
-    } catch (err) {
-        res.status(500).json({error : err})
-    }
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
