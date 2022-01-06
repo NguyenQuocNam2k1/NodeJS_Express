@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 
 const app = express();
 app.get('/', (req , res) =>{
-    res.json("SUCCESS")
+    res.json("SUCCESS ABC")
 })
 
 const URI =
